@@ -169,7 +169,7 @@ public class JumbleEngine {
      *
      * @param word       The input word to use as base/seed.
      * @param minLength  The minimum length (inclusive) of sub words.
-     *                   Expects positive integer.
+     *                   When zero, return empty list.
      *                   Default is 3.
      * @return  The list of sub words constructed from input `word`.
      */
