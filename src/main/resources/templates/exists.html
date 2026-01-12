@@ -14,6 +14,9 @@
             <h2 class="text-primary-emphasis">Word Exists</h2>
         </div>
         <div class="col-sm-12 col-xl-12">
+            <div class="bg-light rounded h-100 p-4" th:if="${message}">
+                <p><span th:text="${message}"></span></p>
+            </div>
             <div class="bg-light rounded h-100 p-4">
                 <form th:action="@{/exists}" th:object="${form}" id="frmExists" method="post">
                     <div class="row mb-3">
