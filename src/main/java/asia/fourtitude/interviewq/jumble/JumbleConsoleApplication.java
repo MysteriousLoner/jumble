@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfigurati
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import asia.fourtitude.interviewq.jumble.console.ConsoleApp;
 
@@ -26,6 +27,7 @@ public class JumbleConsoleApplication {
     }
 
     @Bean
+    @Profile("console")
     public CommandLineRunner run(ConsoleApp consoleApp) {
         return args -> consoleApp.run();
     }

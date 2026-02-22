@@ -1,4 +1,4 @@
-package asia.fourtitude.interviewq.jumble.core;
+package asia.fourtitude.interviewq.jumble.core.words;
 
 import org.springframework.stereotype.Repository;
 

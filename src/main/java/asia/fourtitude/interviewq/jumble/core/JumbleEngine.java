@@ -1,8 +1,8 @@
 package asia.fourtitude.interviewq.jumble.core;
 
+import asia.fourtitude.interviewq.jumble.core.words.WordsRepository;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
 import java.util.*;
 
 @Component
@@ -28,11 +28,26 @@ public class JumbleEngine {
      * @return  The scrambled output/letters.
      */
     public String scramble(String word) {
-        /*
-         * Refer to the method's Javadoc (above) and implement accordingly.
-         * Must pass the corresponding unit tests.
-         */
-        throw new UnsupportedOperationException("to be implemented");
+        if (!wordsRepository.contains(word)) {
+            throw new IllegalArgumentException("Word not found in repository: " + word);
+        }
+        if (word == null || word.length() <= 1) {
+            return word;
+        }
+        List<Character> chars = new ArrayList<>();
+        for (char c : word.toCharArray()) {
+            chars.add(c);
+        }
+        String shuffled;
+        do {
+            Collections.shuffle(chars);
+            StringBuilder sb = new StringBuilder();
+            for (char c : chars) {
+                sb.append(c);
+            }
+            shuffled = sb.toString();
+        } while (shuffled.equals(word));
+        return shuffled;
     }
 
     /**
