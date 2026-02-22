@@ -251,11 +251,67 @@ public class JumbleEngine {
      * @return  The list of sub words constructed from input `word`.
      */
     public Collection<String> generateSubWords(String word, Integer minLength) {
-        /*
-         * Refer to the method's Javadoc (above) and implement accordingly.
-         * Must pass the corresponding unit tests.
-         */
-        throw new UnsupportedOperationException("to be implemented");
+        // Guard: invalid input
+        if (word == null || word.trim().isEmpty()) {
+            return Collections.emptyList();
+        }
+        String normalised = normalise(word);
+        for (char c : normalised.toCharArray()) {
+            if (!Character.isLetter(c)) {
+                return Collections.emptyList();
+            }
+        }
+
+        // Resolve effective minLength
+        int effectiveMin = (minLength == null) ? 3 : minLength;
+
+        // minLength=0 or minLength >= seed length → nothing can qualify
+        if (effectiveMin <= 0 || effectiveMin >= normalised.length()) {
+            return Collections.emptyList();
+        }
+
+        // Build letter-frequency map for the seed word
+        Map<Character, Integer> seedFreq = letterFrequency(normalised);
+
+        // A candidate sub word qualifies when:
+        //   1. Its length is between effectiveMin and seed.length - 1 (strictly shorter)
+        //   2. Every letter it needs is available in the seed's frequency map
+        return wordsRepository.getWordsAsList().stream()
+                .filter(w -> w.getLength() >= effectiveMin && w.getLength() < normalised.length())
+                .map(Word::getValue)
+                .filter(value -> isSubset(letterFrequency(value), seedFreq))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Builds a character frequency map for the given string.
+     *
+     * @param s the input string (already normalised to lower-case)
+     * @return map of character → occurrence count
+     */
+    private Map<Character, Integer> letterFrequency(String s) {
+        Map<Character, Integer> freq = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            freq.merge(c, 1, Integer::sum);
+        }
+        return freq;
+    }
+
+    /**
+     * Returns {@code true} when every entry in {@code candidate} is satisfied
+     * by the available counts in {@code available}.
+     *
+     * @param candidate frequency map of the word being tested
+     * @param available frequency map of the seed word's letters
+     * @return {@code true} if the candidate can be formed from the available letters
+     */
+    private boolean isSubset(Map<Character, Integer> candidate, Map<Character, Integer> available) {
+        for (Map.Entry<Character, Integer> entry : candidate.entrySet()) {
+            if (available.getOrDefault(entry.getKey(), 0) < entry.getValue()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
