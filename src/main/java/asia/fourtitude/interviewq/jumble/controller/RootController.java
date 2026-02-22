@@ -95,16 +95,12 @@ public class RootController {
 
     @PostMapping("prefix")
     public String doPostPrefix(
-            @ModelAttribute(name = "form") PrefixForm form,
+            @Valid @ModelAttribute(name = "form") PrefixForm form,
             BindingResult bindingResult, Model model) {
-        /*
-         * TODO:
-         * a) Validate the input `form`
-         * b) To call JumbleEngine#wordsMatchingPrefix()
-         * c) Presentation page to show the result
-         * d) Must pass the corresponding unit tests
-         */
-
+        if (bindingResult.hasErrors()) {
+            return "prefix";
+        }
+        form.setWords(this.jumbleEngine.wordsMatchingPrefix(form.getPrefix()));
         return "prefix";
     }
 
