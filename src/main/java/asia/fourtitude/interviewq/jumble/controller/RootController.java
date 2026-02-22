@@ -112,17 +112,25 @@ public class RootController {
 
     @PostMapping("search")
     public String doPostSearch(
-            @ModelAttribute(name = "form") SearchForm form,
+            @Valid @ModelAttribute(name = "form") SearchForm form,
             BindingResult bindingResult, Model model) {
-        /*
-         * TODO:
-         * a) Validate the input `form`
-         * b) Show the fields error accordingly: "Invalid startChar", "Invalid endChar", "Invalid length".
-         * c) To call JumbleEngine#searchWords()
-         * d) Presentation page to show the result
-         * e) Must pass the corresponding unit tests
-         */
+        boolean startCharEmpty = form.getStartChar() == null || form.getStartChar().isEmpty();
+        boolean endCharEmpty = form.getEndChar() == null || form.getEndChar().isEmpty();
+        boolean lengthEmpty = form.getLength() == null && !bindingResult.hasFieldErrors("length");
 
+        if (startCharEmpty && endCharEmpty && lengthEmpty) {
+            bindingResult.rejectValue("startChar", "error.form", "Invalid startChar");
+            bindingResult.rejectValue("endChar", "error.form", "Invalid endChar");
+            bindingResult.rejectValue("length", "error.form", "Invalid length");
+        }
+
+        if (bindingResult.hasErrors()) {
+            return "search";
+        }
+
+        Character startChar = startCharEmpty ? null : form.getStartChar().charAt(0);
+        Character endChar = endCharEmpty ? null : form.getEndChar().charAt(0);
+        form.setWords(this.jumbleEngine.searchWords(startChar, endChar, form.getLength()));
         return "search";
     }
 
