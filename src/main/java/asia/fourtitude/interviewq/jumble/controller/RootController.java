@@ -2,6 +2,7 @@ package asia.fourtitude.interviewq.jumble.controller;
 
 import java.time.ZonedDateTime;
 
+import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,16 +48,19 @@ public class RootController {
 
     @PostMapping("scramble")
     public String doPostScramble(
-            @ModelAttribute(name = "form") ScrambleForm form,
+            @Valid @ModelAttribute(name = "form") ScrambleForm form,
             BindingResult bindingResult, Model model) {
-        /*
-         * TODO:
-         * a) Validate the input `form`
-         * b) To call JumbleEngine#scramble()
-         * c) Presentation page to show the result
-         * d) Must pass the corresponding unit tests
-         */
-
+        if (bindingResult.hasErrors()) {
+            return "scramble";
+        }
+        String scrambled;
+        try {
+            scrambled = this.jumbleEngine.scramble(form.getWord());
+        } catch (IllegalArgumentException e) {
+            bindingResult.rejectValue("word", "error.form", e.getMessage());
+            return "scramble";
+        }
+        form.setScramble(scrambled);
         return "scramble";
     }
 
