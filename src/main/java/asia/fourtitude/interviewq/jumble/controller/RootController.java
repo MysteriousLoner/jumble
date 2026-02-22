@@ -78,16 +78,12 @@ public class RootController {
 
     @PostMapping("exists")
     public String doPostExists(
-            @ModelAttribute(name = "form") ExistsForm form,
+            @Valid @ModelAttribute(name = "form") ExistsForm form,
             BindingResult bindingResult, Model model) {
-        /*
-         * TODO:
-         * a) Validate the input `form`
-         * b) To call JumbleEngine#exists()
-         * c) Presentation page to show the result
-         * d) Must pass the corresponding unit tests
-         */
-
+        if (bindingResult.hasErrors()) {
+            return "exists";
+        }
+        form.setExists(this.jumbleEngine.exists(form.getWord()));
         return "exists";
     }
 
