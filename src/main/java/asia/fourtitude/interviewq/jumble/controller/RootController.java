@@ -142,16 +142,12 @@ public class RootController {
 
     @PostMapping("subWords")
     public String doPostSubWords(
-            @ModelAttribute(name = "form") SubWordsForm form,
+            @Valid @ModelAttribute(name = "form") SubWordsForm form,
             BindingResult bindingResult, Model model) {
-        /*
-         * TODO:
-         * a) Validate the input `form`
-         * b) To call JumbleEngine#generateSubWords()
-         * c) Presentation page to show the result
-         * d) Must pass the corresponding unit tests
-         */
-
+        if (bindingResult.hasErrors()) {
+            return "subWords";
+        }
+        form.setWords(this.jumbleEngine.generateSubWords(form.getWord(), form.getMinLength()));
         return "subWords";
     }
 
