@@ -1,9 +1,12 @@
 package asia.fourtitude.interviewq.jumble.core;
 
+import asia.fourtitude.interviewq.jumble.core.words.Word;
+import asia.fourtitude.interviewq.jumble.core.words.WordsRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 @Component
 public class JumbleEngine {
@@ -28,25 +31,28 @@ public class JumbleEngine {
      * @return  The scrambled output/letters.
      */
     public String scramble(String word) {
-        if (!wordsRepository.contains(word)) {
-            throw new IllegalArgumentException("Word not found in repository: " + word);
-        }
         if (word == null || word.length() <= 1) {
             return word;
         }
+        String normalised = word.trim().toLowerCase();
+        boolean found = wordsRepository.getWordsAsList().stream()
+                .anyMatch(w -> w.getValue().equals(normalised));
+        if (!found) {
+            throw new IllegalArgumentException("Word not found in dictionary: " + word);
+        }
         List<Character> chars = new ArrayList<>();
-        for (char c : word.toCharArray()) {
+        for (char c : normalised.toCharArray()) {
             chars.add(c);
         }
         String shuffled;
         do {
             Collections.shuffle(chars);
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder(chars.size());
             for (char c : chars) {
                 sb.append(c);
             }
             shuffled = sb.toString();
-        } while (shuffled.equals(word));
+        } while (shuffled.equals(normalised));
         return shuffled;
     }
 
@@ -68,7 +74,10 @@ public class JumbleEngine {
      * @see "https://www.google.com/search?q=palindrome+meaning"
      */
     public Collection<String> retrievePalindromeWords() {
-        return Collections.unmodifiableCollection(wordsRepository.getPalindromes());
+        return wordsRepository.getWordsAsList().stream()
+                .filter(Word::isPalindrome)
+                .map(Word::getValue)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -85,23 +94,18 @@ public class JumbleEngine {
      *          Or null if none matching.
      */
     public String pickOneRandomWord(Integer length) {
+        List<Word> candidates;
         if (length == null) {
-            // Pick a random length bucket, then a random word within it – both O(1).
-            List<Integer> lengths = new ArrayList<>(wordsRepository.availableLengths());
-            if (lengths.isEmpty()) {
-                return null;
-            }
-            int randomLength = lengths.get(ThreadLocalRandom.current().nextInt(lengths.size()));
-            List<String> bucket = wordsRepository.wordsByLength(randomLength);
-            return bucket.get(ThreadLocalRandom.current().nextInt(bucket.size()));
+            candidates = wordsRepository.getWordsAsList();
+        } else {
+            candidates = wordsRepository.getWordsAsList().stream()
+                    .filter(w -> w.getLength() == length)
+                    .collect(Collectors.toList());
         }
-
-        // Direct O(1) lookup into the pre-bucketed list for the given length.
-        List<String> bucket = wordsRepository.wordsByLength(length);
-        if (bucket.isEmpty()) {
+        if (candidates.isEmpty()) {
             return null;
         }
-        return bucket.get(ThreadLocalRandom.current().nextInt(bucket.size()));
+        return candidates.get(ThreadLocalRandom.current().nextInt(candidates.size())).getValue();
     }
 
     /**
@@ -117,7 +121,17 @@ public class JumbleEngine {
      * @return  true if `word` exists in internal word list.
      */
     public boolean exists(String word) {
-        return wordsRepository.contains(word);
+        if (word == null || word.trim().isEmpty()) {
+            return false;
+        }
+        String normalised = word.trim().toLowerCase();
+        for (char c : normalised.toCharArray()) {
+            if (!Character.isLetter(c)) {
+                return false;
+            }
+        }
+        return wordsRepository.getWordsAsList().stream()
+                .anyMatch(w -> w.getValue().equals(normalised));
     }
 
     /**
