@@ -79,15 +79,32 @@ public class GameApiController {
          * Refer to the method's Javadoc (above) and implement accordingly.
          * Must pass the corresponding unit tests.
          */
-        GameGuessOutput output = new GameGuessOutput();
-
         GameState gameState = this.jumbleEngine.createGameState(6, 3);
 
         /*
-         * TODO:
          * a) Store the game state to the repository, with unique game board ID
          * b) Return the game board/state (GameGuessOutput) to caller
          */
+        String id = java.util.UUID.randomUUID().toString();
+
+        GameGuessModel model = new GameGuessModel();
+        model.setId(id);
+        model.setCreatedAt(new java.util.Date());
+        model.setModifiedAt(new java.util.Date());
+        model.setGameState(gameState);
+
+        this.gameBoards.put(id, model);
+
+        int totalWords = gameState.getSubWords().size();
+
+        GameGuessOutput output = new GameGuessOutput();
+        output.setResult("Created new game.");
+        output.setId(id);
+        output.setOriginalWord(gameState.getOriginal());
+        output.setScrambleWord(gameState.getScramble());
+        output.setTotalWords(totalWords);
+        output.setRemainingWords(totalWords);
+        output.setGuessedWords(new java.util.ArrayList<>());
 
         return new ResponseEntity<>(output, HttpStatus.OK);
     }
@@ -211,16 +228,92 @@ public class GameApiController {
          * Refer to the method's Javadoc (above) and implement accordingly.
          * Must pass the corresponding unit tests.
          */
-        GameGuessOutput output = new GameGuessOutput();
 
         /*
-         * TODO:
          * a) Validate the input (GameGuessInput)
+         */
+        // Validate id: must be non-null and a valid UUID format
+        String inputId = (input == null) ? null : input.getId();
+        if (inputId == null || inputId.trim().isEmpty()) {
+            GameGuessOutput invalid = new GameGuessOutput();
+            invalid.setResult("Invalid Game ID.");
+            return new ResponseEntity<>(invalid, HttpStatus.NOT_FOUND);
+        }
+        // Validate UUID format
+        try {
+            java.util.UUID.fromString(inputId.trim());
+        } catch (IllegalArgumentException e) {
+            GameGuessOutput invalid = new GameGuessOutput();
+            invalid.setResult("Invalid Game ID.");
+            return new ResponseEntity<>(invalid, HttpStatus.NOT_FOUND);
+        }
+
+        /*
          * b) Check records exists in repository (search by input `id`)
+         */
+        GameGuessModel model = this.gameBoards.get(inputId.trim());
+        if (model == null) {
+            GameGuessOutput notFound = new GameGuessOutput();
+            notFound.setResult("Game board/state not found.");
+            return new ResponseEntity<>(notFound, HttpStatus.NOT_FOUND);
+        }
+
+        /*
          * c) From the input guessing `word`, implement the game logic
          * d) Update the game board (and game state) in repository
+         */
+        GameState gameState = model.getGameState();
+        String guessWord = (input.getWord() == null) ? null : input.getWord().trim();
+
+        // Rescramble on every play
+        gameState.setScramble(this.jumbleEngine.scramble(gameState.getOriginal()));
+        model.setModifiedAt(new java.util.Date());
+
+        int totalWords = gameState.getSubWords().size();
+        long guessedCount = gameState.getSubWords().values().stream()
+                .filter(Boolean.TRUE::equals).count();
+        int remainingWords = totalWords - (int) guessedCount;
+
+        String result;
+        boolean guessedCorrectly = false;
+
+        if (guessWord == null || guessWord.isEmpty()) {
+            // null / blank word → incorrect
+            result = "Guessed incorrectly.";
+        } else {
+            Boolean existing = gameState.getSubWords().get(guessWord);
+            if (existing == null) {
+                // word not in sub-words list
+                result = "Guessed incorrectly.";
+            } else if (existing == Boolean.TRUE) {
+                // already guessed before
+                result = "Guessed incorrectly.";
+            } else {
+                // correct new guess
+                gameState.updateGuessWord(guessWord);
+                guessedCorrectly = true;
+                guessedCount++;
+                remainingWords = totalWords - (int) guessedCount;
+                if (remainingWords == 0) {
+                    result = "All words guessed.";
+                } else {
+                    result = "Guessed correctly.";
+                }
+            }
+        }
+
+        /*
          * e) Return the updated game board/state (GameGuessOutput) to caller
          */
+        GameGuessOutput output = new GameGuessOutput();
+        output.setResult(result);
+        output.setId(model.getId());
+        output.setOriginalWord(gameState.getOriginal());
+        output.setScrambleWord(gameState.getScramble());
+        output.setGuessWord(guessWord);
+        output.setTotalWords(totalWords);
+        output.setRemainingWords(remainingWords);
+        output.setGuessedWords(gameState.getGuessedWords());
 
         return new ResponseEntity<>(output, HttpStatus.OK);
     }
