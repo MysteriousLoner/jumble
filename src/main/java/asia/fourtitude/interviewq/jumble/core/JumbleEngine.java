@@ -205,11 +205,24 @@ public class JumbleEngine {
      * @return  The list of words matching the searching criteria.
      */
     public Collection<String> searchWords(Character startChar, Character endChar, Integer length) {
-        /*
-         * Refer to the method's Javadoc (above) and implement accordingly.
-         * Must pass the corresponding unit tests.
-         */
-        throw new UnsupportedOperationException("to be implemented");
+        boolean validStart  = startChar != null && Character.isLetter(startChar);
+        boolean validEnd    = endChar   != null && Character.isLetter(endChar);
+        boolean validLength = length    != null && length >= 1;
+
+        // At least one input must be valid
+        if (!validStart && !validEnd && !validLength) {
+            return Collections.emptyList();
+        }
+
+        Character normStart = validStart ? Character.toLowerCase(startChar) : null;
+        Character normEnd   = validEnd   ? Character.toLowerCase(endChar)   : null;
+
+        return wordsRepository.getWordsAsList().stream()
+                .filter(w -> !validStart  || w.getPrefix().equals(normStart))
+                .filter(w -> !validEnd    || w.getPostfix().equals(normEnd))
+                .filter(w -> !validLength || w.getLength() == length)
+                .map(Word::getValue)
+                .collect(Collectors.toList());
     }
 
     /**
