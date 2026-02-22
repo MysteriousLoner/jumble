@@ -4,15 +4,20 @@ import java.io.PrintStream;
 import java.util.Collection;
 import java.util.Scanner;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
+
 import asia.fourtitude.interviewq.jumble.core.JumbleEngine;
 
+@Profile("console")
+@Component
 public class ConsoleApp extends AConsole {
 
     private final JumbleEngine engine;
 
-    public ConsoleApp(Scanner cin, PrintStream cout) {
-        super(cin, cout);
-        this.engine = new JumbleEngine();
+    public ConsoleApp(JumbleEngine engine, Scanner scanner, PrintStream printStream) {
+        super(scanner, printStream);
+        this.engine = engine;
     }
 
     private void scramble() {
@@ -234,8 +239,5 @@ public class ConsoleApp extends AConsole {
         } while (! finish && ! exit);
     }
 
-    public static void main(String[] args) {
-        new ConsoleApp(new Scanner(System.in), new PrintStream(System.out)).run();
-    }
 
 }

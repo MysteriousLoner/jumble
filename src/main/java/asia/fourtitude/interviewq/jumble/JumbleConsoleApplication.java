@@ -1,8 +1,5 @@
 package asia.fourtitude.interviewq.jumble;
 
-import java.io.PrintStream;
-import java.util.Scanner;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
@@ -19,17 +16,18 @@ import asia.fourtitude.interviewq.jumble.console.ConsoleApp;
         ThymeleafAutoConfiguration.class,
         ErrorMvcAutoConfiguration.class
 })
-public class JumbleApplication {
+public class JumbleConsoleApplication {
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(JumbleApplication.class);
+        SpringApplication app = new SpringApplication(JumbleConsoleApplication.class);
         app.setWebApplicationType(WebApplicationType.NONE);
+        app.setAdditionalProfiles("console");
         app.run(args);
     }
 
     @Bean
-    public CommandLineRunner run() {
-        return args -> new ConsoleApp(new Scanner(System.in), new PrintStream(System.out)).run();
+    public CommandLineRunner run(ConsoleApp consoleApp) {
+        return args -> consoleApp.run();
     }
 
 }

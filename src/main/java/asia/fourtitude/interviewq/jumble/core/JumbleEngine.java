@@ -1,9 +1,18 @@
 package asia.fourtitude.interviewq.jumble.core;
 
+import org.springframework.stereotype.Component;
+
 import java.io.*;
 import java.util.*;
 
+@Component
 public class JumbleEngine {
+
+    private final WordsRepository wordsRepository;
+
+    public JumbleEngine(WordsRepository wordsRepository) {
+        this.wordsRepository = wordsRepository;
+    }
 
     /**
      * From the input `word`, produces/generates a copy which has the same

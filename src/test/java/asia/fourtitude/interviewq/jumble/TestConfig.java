@@ -4,13 +4,14 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 
 import asia.fourtitude.interviewq.jumble.core.JumbleEngine;
+import asia.fourtitude.interviewq.jumble.core.WordsRepository;
 
 @TestConfiguration
 public class TestConfig {
 
     @Bean
     public JumbleEngine jumbleEngine() {
-        return new JumbleEngine();
+        return new JumbleEngine(new WordsRepository());
     }
 
 }
