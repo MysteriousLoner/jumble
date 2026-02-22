@@ -28,7 +28,13 @@ public class ConsoleApp extends AConsole {
         String word = cin.nextLine().trim();
 
         if (! word.isEmpty()) {
-            String drow = engine.scramble(word);
+            String drow;
+            try {
+                drow = engine.scramble(word);
+            } catch (IllegalArgumentException e) {
+                cout.println(e.getMessage());
+                return;
+            }
             cout.print("Scrambled : ");
             cout.println(drow);
             if (word.equals(drow)) {
