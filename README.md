@@ -8,8 +8,23 @@ Please refer to "java application developer.docx" for more details.
 
 ### Console Mode
 
-To run the application in console mode, execute the following command:
+To run the application in console mode, execute either of the following commands:
 
 ```bash
-./mvnw spring-boot:run -DskipTests -Dspring-boot.run.main-class=asia.fourtitude.interviewq.jumble.JumbleConsoleApplication -Dspring-boot.run.profiles=console
+# Default (no profile flag needed)
+./mvnw spring-boot:run
+
+# Explicit console profile
+./mvnw spring-boot:run -Pconsole
 ```
+
+### Web Mode
+
+To run the application in web mode, execute the following command:
+
+```bash
+./mvnw spring-boot:run -Pweb
+```
+
+The web application will be available at **http://localhost:8080**.
+
