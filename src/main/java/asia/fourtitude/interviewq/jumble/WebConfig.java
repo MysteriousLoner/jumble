@@ -19,7 +19,9 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import nz.net.ultraq.thymeleaf.layoutdialect.decorators.strategies.GroupingStrategy;
+import org.springframework.context.annotation.Profile;
 
+@Profile("web")
 @Configuration
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {

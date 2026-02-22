@@ -16,7 +16,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import asia.fourtitude.interviewq.jumble.core.GameState;
 import asia.fourtitude.interviewq.jumble.core.JumbleEngine;
 import asia.fourtitude.interviewq.jumble.model.GameBoard;
+import org.springframework.context.annotation.Profile;
 
+@Profile("web")
 @Controller
 @RequestMapping(path = "/game")
 @SessionAttributes("board")

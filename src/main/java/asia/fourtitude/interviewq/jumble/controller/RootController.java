@@ -19,7 +19,9 @@ import asia.fourtitude.interviewq.jumble.model.PrefixForm;
 import asia.fourtitude.interviewq.jumble.model.ScrambleForm;
 import asia.fourtitude.interviewq.jumble.model.SearchForm;
 import asia.fourtitude.interviewq.jumble.model.SubWordsForm;
+import org.springframework.context.annotation.Profile;
 
+@Profile("web")
 @Controller
 @RequestMapping(path = "/")
 public class RootController {
