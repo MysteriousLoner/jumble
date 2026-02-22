@@ -17,6 +17,20 @@ public class JumbleEngine {
         this.wordsRepository = wordsRepository;
     }
 
+    // -----------------------------------------------------------------------
+    // Helpers
+    // -----------------------------------------------------------------------
+
+    /**
+     * Trims and lower-cases the input string for case-insensitive comparisons.
+     *
+     * @param input the raw input string
+     * @return normalised string
+     */
+    private String normalise(String input) {
+        return input.trim().toLowerCase();
+    }
+
     /**
      * From the input `word`, produces/generates a copy which has the same
      * letters, but in different ordering.
@@ -34,7 +48,7 @@ public class JumbleEngine {
         if (word == null || word.length() <= 1) {
             return word;
         }
-        String normalised = word.trim().toLowerCase();
+        String normalised = normalise(word);
         boolean found = wordsRepository.getWordsAsList().stream()
                 .anyMatch(w -> w.getValue().equals(normalised));
         if (!found) {
@@ -124,7 +138,7 @@ public class JumbleEngine {
         if (word == null || word.trim().isEmpty()) {
             return false;
         }
-        String normalised = word.trim().toLowerCase();
+        String normalised = normalise(word);
         for (char c : normalised.toCharArray()) {
             if (!Character.isLetter(c)) {
                 return false;
@@ -151,11 +165,19 @@ public class JumbleEngine {
      * @return  The list of words matching the prefix.
      */
     public Collection<String> wordsMatchingPrefix(String prefix) {
-        /*
-         * Refer to the method's Javadoc (above) and implement accordingly.
-         * Must pass the corresponding unit tests.
-         */
-        throw new UnsupportedOperationException("to be implemented");
+        if (prefix == null || prefix.trim().isEmpty()) {
+            return Collections.emptyList();
+        }
+        String normalised = normalise(prefix);
+        for (char c : normalised.toCharArray()) {
+            if (!Character.isLetter(c)) {
+                return Collections.emptyList();
+            }
+        }
+        return wordsRepository.getWordsAsList().stream()
+                .filter(w -> w.getValue().startsWith(normalised))
+                .map(Word::getValue)
+                .collect(Collectors.toList());
     }
 
     /**
