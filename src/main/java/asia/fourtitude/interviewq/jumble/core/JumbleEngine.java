@@ -3,6 +3,7 @@ package asia.fourtitude.interviewq.jumble.core;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 public class JumbleEngine {
@@ -67,17 +68,6 @@ public class JumbleEngine {
      * @see "https://www.google.com/search?q=palindrome+meaning"
      */
     public Collection<String> retrievePalindromeWords() {
-        /*
-         * Delegates to WordsRepository#getPalindromes(), which returns the
-         * pre-computed HashSet of palindromes built during word loading.
-         *
-         * Palindrome detection uses O(1) hash-table lookups:
-         *   reversed = new StringBuilder(word).reverse().toString()
-         *   isPalindrome ⟺ reversed.equals(word)
-         *
-         * The classpath resource access and try-with-resources statement are
-         * both exercised inside WordsRepository's constructor.
-         */
         return Collections.unmodifiableCollection(wordsRepository.getPalindromes());
     }
 
@@ -95,11 +85,23 @@ public class JumbleEngine {
      *          Or null if none matching.
      */
     public String pickOneRandomWord(Integer length) {
-        /*
-         * Refer to the method's Javadoc (above) and implement accordingly.
-         * Must pass the corresponding unit tests.
-         */
-        throw new UnsupportedOperationException("to be implemented");
+        if (length == null) {
+            // Pick a random length bucket, then a random word within it – both O(1).
+            List<Integer> lengths = new ArrayList<>(wordsRepository.availableLengths());
+            if (lengths.isEmpty()) {
+                return null;
+            }
+            int randomLength = lengths.get(ThreadLocalRandom.current().nextInt(lengths.size()));
+            List<String> bucket = wordsRepository.wordsByLength(randomLength);
+            return bucket.get(ThreadLocalRandom.current().nextInt(bucket.size()));
+        }
+
+        // Direct O(1) lookup into the pre-bucketed list for the given length.
+        List<String> bucket = wordsRepository.wordsByLength(length);
+        if (bucket.isEmpty()) {
+            return null;
+        }
+        return bucket.get(ThreadLocalRandom.current().nextInt(bucket.size()));
     }
 
     /**
@@ -115,10 +117,6 @@ public class JumbleEngine {
      * @return  true if `word` exists in internal word list.
      */
     public boolean exists(String word) {
-        /*
-         * Refer to the method's Javadoc (above) and implement accordingly.
-         * Must pass the corresponding unit tests.
-         */
         return wordsRepository.contains(word);
     }
 

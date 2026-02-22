@@ -137,4 +137,23 @@ public class WordsRepository {
         return Collections.unmodifiableList(
                 wordsByLength.getOrDefault(length, Collections.emptyList()));
     }
+
+    /**
+     * Returns the total number of words in the repository.
+     *
+     * @return word count
+     */
+    public int size() {
+        return wordSet.size();
+    }
+
+    /**
+     * Returns an unmodifiable set of all distinct word lengths present in the
+     * repository. Used for O(1) random length selection.
+     *
+     * @return set of lengths
+     */
+    public Set<Integer> availableLengths() {
+        return Collections.unmodifiableSet(wordsByLength.keySet());
+    }
 }
