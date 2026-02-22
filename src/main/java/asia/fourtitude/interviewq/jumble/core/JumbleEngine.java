@@ -98,7 +98,7 @@ public class JumbleEngine {
          * Refer to the method's Javadoc (above) and implement accordingly.
          * Must pass the corresponding unit tests.
          */
-        throw new UnsupportedOperationException("to be implemented");
+        return wordsRepository.contains(word);
     }
 
     /**
