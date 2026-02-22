@@ -1,4 +1,4 @@
-package asia.fourtitude.interviewq.jumble.core.words;
+package asia.fourtitude.interviewq.jumble.core;
 
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +29,14 @@ public class WordsRepository {
 
     /** Words grouped by their length – used for O(1) random-pick-by-length. */
     private final Map<Integer, List<String>> wordsByLength = new HashMap<>();
+
+    /**
+     * Palindrome words – populated during {@link #insert(String)} by comparing
+     * the word's hash-based identity against its reversed form in {@link #wordSet}.
+     * A word is a palindrome when {@code wordSet.contains(reversed)} AND
+     * {@code reversed.equals(word)}, which is O(1) average-case via {@link HashSet}.
+     */
+    private final Set<String> palindromeSet = new HashSet<>();
 
     // -----------------------------------------------------------------------
     // Initialisation
@@ -75,6 +83,17 @@ public class WordsRepository {
             wordsByLength
                     .computeIfAbsent(normalised.length(), k -> new ArrayList<>())
                     .add(normalised);
+
+            // Palindrome detection via hash-table lookup:
+            // Reverse the word and check O(1) membership in wordSet.
+            // For a palindrome, the reversed string IS the word itself,
+            // so wordSet.contains(reversed) is true and reversed.equals(normalised).
+            if (normalised.length() >= 2) {
+                String reversed = new StringBuilder(normalised).reverse().toString();
+                if (reversed.equals(normalised)) {
+                    palindromeSet.add(normalised);
+                }
+            }
         }
     }
 
@@ -94,6 +113,17 @@ public class WordsRepository {
             return false;
         }
         return wordSet.contains(word.trim().toLowerCase());
+    }
+
+    /**
+     * Returns an unmodifiable view of all palindrome words (length ≥ 2)
+     * discovered during word loading.
+     * Lookup is O(1) – backed by a pre-computed {@link HashSet}.
+     *
+     * @return unmodifiable set of palindrome words
+     */
+    public Collection<String> getPalindromes() {
+        return Collections.unmodifiableSet(palindromeSet);
     }
 
     /**

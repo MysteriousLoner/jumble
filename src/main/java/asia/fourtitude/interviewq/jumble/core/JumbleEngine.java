@@ -1,6 +1,5 @@
 package asia.fourtitude.interviewq.jumble.core;
 
-import asia.fourtitude.interviewq.jumble.core.words.WordsRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -65,14 +64,21 @@ public class JumbleEngine {
      * d) pass unit test: JumbleEngineTest#palindrome()
      *
      * @return  The list of palindrome words found in system/engine.
-     * @see https://www.google.com/search?q=palindrome+meaning
+     * @see "https://www.google.com/search?q=palindrome+meaning"
      */
     public Collection<String> retrievePalindromeWords() {
         /*
-         * Refer to the method's Javadoc (above) and implement accordingly.
-         * Must pass the corresponding unit tests.
+         * Delegates to WordsRepository#getPalindromes(), which returns the
+         * pre-computed HashSet of palindromes built during word loading.
+         *
+         * Palindrome detection uses O(1) hash-table lookups:
+         *   reversed = new StringBuilder(word).reverse().toString()
+         *   isPalindrome ⟺ reversed.equals(word)
+         *
+         * The classpath resource access and try-with-resources statement are
+         * both exercised inside WordsRepository's constructor.
          */
-        throw new UnsupportedOperationException("to be implemented");
+        return Collections.unmodifiableCollection(wordsRepository.getPalindromes());
     }
 
     /**
