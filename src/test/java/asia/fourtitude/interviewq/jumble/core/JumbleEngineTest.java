@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import asia.fourtitude.interviewq.jumble.JumbleWebApplication;
+import asia.fourtitude.interviewq.jumble.JumbleApplication;
 
-@SpringBootTest(classes = JumbleWebApplication.class, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@SpringBootTest(classes = JumbleApplication.class, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @EnableAutoConfiguration(exclude = { org.springdoc.core.SpringDocConfiguration.class })
 class JumbleEngineTest {
 
