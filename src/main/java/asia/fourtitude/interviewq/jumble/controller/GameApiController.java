@@ -28,9 +28,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.context.annotation.Profile;
 
-@Profile("web")
 @RestController
 @Tag(name = "Game API", description = "Guessing words game REST API endpoint.")
 @RequestMapping(path = "/api/game")

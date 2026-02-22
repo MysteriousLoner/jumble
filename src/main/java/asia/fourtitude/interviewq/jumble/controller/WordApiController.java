@@ -23,9 +23,7 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.context.annotation.Profile;
 
-@Profile("web")
 @RestController
 @Tag(name = "Word API", description = "Word REST API endpoint.")
 @RequestMapping(path = "/api/word")
