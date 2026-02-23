@@ -1,13 +1,16 @@
 .App {
   min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   color: #000;
+  overflow: hidden;
 }
 
 /* Welcome Screen */
 .welcome-screen {
   min-height: 100vh;
+  height: 100vh;
   background-color: #000;
   display: flex;
   flex-direction: column;
@@ -41,15 +44,16 @@
 .App-header {
   background-color: #000;
   color: #fff;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #fff;
+  flex-shrink: 0;
 }
 
 .App-header h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.3em;
   margin: 0;
@@ -57,16 +61,19 @@
 
 .App-main {
   flex: 1;
-  padding: 2rem;
+  padding: 1rem;
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
   background-color: #fff;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
-  font-size: 0.9rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.8rem;
   border: 2px solid #000;
   background-color: #fff;
   color: #000;
@@ -108,29 +115,32 @@
 }
 
 .message {
-  padding: 1rem;
-  margin-bottom: 1.5rem;
+  padding: 0.75rem;
   text-align: center;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   border: 2px solid #000;
   background-color: #fff;
   color: #000;
+  flex-shrink: 0;
 }
 
 .game-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+  flex: 1;
+  min-height: 0;
 }
 
 /* Top: Game Stats */
 .game-stats {
   display: flex;
   justify-content: space-around;
-  padding: 2rem 0;
+  padding: 1rem 0;
   border-bottom: 2px solid #000;
+  flex-shrink: 0;
 }
 
 .stat {
@@ -141,14 +151,14 @@
 }
 
 .stat-value {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #000;
   line-height: 1;
 }
 
 .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #000;
@@ -158,17 +168,18 @@
 .letter-buttons {
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  flex-shrink: 0;
 }
 
 .letter-btn {
-  width: 4rem;
-  height: 4rem;
-  font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  border: 3px solid #000;
+  border: 2px solid #000;
   background-color: #fff;
   color: #000;
   cursor: pointer;
@@ -196,18 +207,19 @@
 .input-section {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem 0;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
   border-top: 2px solid #000;
   border-bottom: 2px solid #000;
+  flex-shrink: 0;
 }
 
 .input-display {
-  min-height: 4rem;
-  padding: 1rem;
-  border: 3px solid #000;
+  min-height: 3rem;
+  padding: 0.75rem;
+  border: 2px solid #000;
   background-color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.3em;
   text-align: center;
@@ -218,7 +230,7 @@
 
 .input-display .placeholder {
   color: #ccc;
-  font-size: 1rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
 }
 
@@ -228,86 +240,191 @@
 }
 
 .guessed-words {
-  padding: 1rem 0;
+  border-top: 2px solid #000;
+  padding-top: 0.75rem;
+  flex-shrink: 0;
 }
 
-.guessed-label {
-  font-size: 0.75rem;
+.guessed-toggle {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #fff;
+  border: 2px solid #000;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-weight: 700;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
-  margin-bottom: 1rem;
-  color: #000;
+  transition: all 0.2s ease;
+}
+
+.guessed-toggle:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.toggle-icon {
+  transition: transform 0.2s ease;
+  font-size: 0.7rem;
+}
+
+.toggle-icon.expanded {
+  transform: rotate(180deg);
 }
 
 .word-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 0.75rem;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  border: 2px solid #000;
 }
 
 .guessed-word {
-  padding: 0.5rem 1rem;
-  border: 2px solid #000;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #000;
   background-color: #fff;
   color: #000;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
 }
 
 .game-over {
   text-align: center;
-  padding: 2rem;
-  font-size: 2rem;
+  padding: 1.5rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.3em;
-  border: 3px solid #000;
+  border: 2px solid #000;
   background-color: #000;
   color: #fff;
+  flex-shrink: 0;
 }
 
 
 
 @media (max-width: 600px) {
   .welcome-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .btn-start {
     padding: 1rem 2rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .App-header {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
   }
 
   .App-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .btn-new-game {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
   }
 
   .App-main {
-    padding: 1rem;
+    padding: 0.75rem;
   }
 
-  .letter-btn {
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.2rem;
+  .game-stats {
+    padding: 0.75rem 0;
   }
 
   .stat-value {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.6rem;
+  }
+
+  .letter-buttons {
+    gap: 0.4rem;
+  }
+
+  .letter-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    border: 2px solid #000;
   }
 
   .input-display {
-    font-size: 1.2rem;
-    min-height: 3rem;
+    font-size: 1rem;
+    min-height: 2.5rem;
+    padding: 0.5rem;
+  }
+
+  .input-display .placeholder {
+    font-size: 0.7rem;
   }
 
   .control-buttons {
-    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .message {
+    padding: 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .game-over {
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .letter-btn {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 0.9rem;
+  }
+
+  .stat-value {
+    font-size: 1.3rem;
+  }
+
+  .input-display {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+  }
+}
+
+@media (min-height: 900px) {
+  .game-stats {
+    padding: 1.5rem 0;
+  }
+
+  .letter-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.4rem;
+  }
+
+  .input-display {
+    min-height: 3.5rem;
+    font-size: 1.4rem;
+  }
+
+  .stat-value {
+    font-size: 2.5rem;
   }
 }

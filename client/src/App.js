@@ -7,6 +7,7 @@ function App() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [usedLetters, setUsedLetters] = useState([]);
+  const [isGuessedWordsExpanded, setIsGuessedWordsExpanded] = useState(false);
 
   const startNewGame = async () => {
     setLoading(true);
@@ -156,12 +157,20 @@ function App() {
               {/* Guessed Words */}
               {gameState.guessed_words && gameState.guessed_words.length > 0 && (
                 <div className="guessed-words">
-                  <div className="guessed-label">GUESSED WORDS</div>
-                  <div className="word-list">
-                    {gameState.guessed_words.map((word, index) => (
-                      <span key={index} className="guessed-word">{word.toUpperCase()}</span>
-                    ))}
-                  </div>
+                  <button 
+                    className="guessed-toggle"
+                    onClick={() => setIsGuessedWordsExpanded(!isGuessedWordsExpanded)}
+                  >
+                    <span>GUESSED WORDS ({gameState.guessed_words.length})</span>
+                    <span className={`toggle-icon ${isGuessedWordsExpanded ? 'expanded' : ''}`}>▼</span>
+                  </button>
+                  {isGuessedWordsExpanded && (
+                    <div className="word-list">
+                      {gameState.guessed_words.map((word, index) => (
+                        <span key={index} className="guessed-word">{word.toUpperCase()}</span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
 
