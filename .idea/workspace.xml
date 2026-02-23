@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9767167d-2a54-46d8-8edb-2ee599a0f4b5" name="Changes" comment="unit test for game controller (rest)">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DASHMIN-LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DASHMIN-READ-ME.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-docs.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interviewq-jumble.postman_collection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java application developer.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-jumble-candidate.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nb-configuration.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/ApiConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/AppConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/JumbleApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/console/AConsole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/console/ConsoleApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/console/GuessWord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/controller/GameApiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/controller/GameWebController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/controller/RootController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/controller/WordApiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/core/GameState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/core/JumbleEngine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/core/words/Word.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/core/words/WordsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/model/ExistsForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/model/GameBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/model/GameGuessInput.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/model/GameGuessModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/model/GameGuessOutput.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/model/PrefixForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/model/ScrambleForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/model/SearchForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/asia/fourtitude/interviewq/jumble/model/SubWordsForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/bootstrap-admin-template-free.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/icons8-favicon-24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/icons8-favicon-48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/icons8-favicon-96.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/testimonial-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/testimonial-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/user.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/shared.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/chart/chart.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/easing/easing.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/easing/easing.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/assets/ajax-loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/assets/owl.carousel.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/assets/owl.carousel.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/assets/owl.theme.default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/assets/owl.theme.default.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/assets/owl.theme.green.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/assets/owl.theme.green.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/assets/owl.video.play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/owl.carousel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/owlcarousel/owl.carousel.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/tempusdominus/js/moment-timezone.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/tempusdominus/js/moment.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/waypoints/links.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/lib/waypoints/waypoints.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_accordion.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_alert.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_badge.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_breadcrumb.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_button-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_card.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_carousel.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_close.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_containers.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_dropdown.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_forms.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_functions.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_grid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_helpers.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_images.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_list-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_modal.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_nav.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_navbar.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_offcanvas.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_pagination.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_popover.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_progress.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_reboot.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_root.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_spinners.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_tables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_toasts.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_tooltip.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_transitions.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_type.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_utilities.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/bootstrap-grid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/bootstrap-reboot.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/bootstrap-utilities.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/bootstrap.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/forms/_floating-labels.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/forms/_form-check.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/forms/_form-control.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/forms/_form-range.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/forms/_form-select.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/forms/_form-text.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/forms/_input-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/forms/_labels.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/forms/_validation.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/helpers/_clearfix.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/helpers/_colored-links.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/helpers/_position.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/helpers/_ratio.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/helpers/_stretched-link.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/helpers/_text-truncation.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/helpers/_visually-hidden.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_alert.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_border-radius.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_box-shadow.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_breakpoints.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_caret.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_clearfix.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_color-scheme.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_container.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_deprecate.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_forms.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_gradients.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_grid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_image.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_list-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_lists.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_pagination.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_reset-text.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_resize.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_table-variants.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_text-truncate.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_transition.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_utilities.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/mixins/_visually-hidden.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/utilities/_api.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/scss/vendor/_rfs.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/exists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/game/board.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/game/help.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/palindrome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/prefix.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/scramble.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/subWords.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/words.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/asia/fourtitude/interviewq/jumble/JumbleConsoleApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/asia/fourtitude/interviewq/jumble/TestConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/asia/fourtitude/interviewq/jumble/controller/GameApiControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/asia/fourtitude/interviewq/jumble/controller/GameWebControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/asia/fourtitude/interviewq/jumble/controller/RootControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/asia/fourtitude/interviewq/jumble/core/JumbleEngineTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/Users/yanglee/IdeaProjects/jumble-ly" value="3A1wLyum8R1u3GVZKmc8ELTshIG" />
+    </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="chat-panel" value="Claude Sonnet 4.6" />
+      <entry key="agent-panel" value="Claude Sonnet 4.6" />
+    </selectedModels>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MysteriousLoner"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MysteriousLoner/jumble.git",
+    "accountId": "a1b548fa-0bec-409e-877f-2bf94b6a60b9"
+  }
+}]]></component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="3A1wLyum8R1u3GVZKmc8ELTshIG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.JumbleEngineTest.executor": "Run",
+    "JUnit.JumbleEngineTest.givenEmptyInvalidWord_thenExpectNotExists.executor": "Run",
+    "JUnit.JumbleEngineTest.givenInvalidPrefix_thenEmptyList.executor": "Run",
+    "JUnit.JumbleEngineTest.givenValidPrefixCaseInsensitive_thenSomeWords.executor": "Run",
+    "JUnit.JumbleEngineTest.givenValidPrefix_thenSomeWords.executor": "Run",
+    "JUnit.JumbleEngineTest.givenValidWord_thenExpectExists.executor": "Run",
+    "JUnit.JumbleEngineTest.palindrome.executor": "Run",
+    "JUnit.JumbleEngineTest.randomWord.executor": "Run",
+    "JUnit.JumbleEngineTest.scramble.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="asia.fourtitude.interviewq.jumble.core" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.JumbleEngineTest">
+    <configuration name="JumbleEngineTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jumble" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asia.fourtitude.interviewq.jumble.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asia.fourtitude.interviewq.jumble.core" />
+      <option name="MAIN_CLASS_NAME" value="asia.fourtitude.interviewq.jumble.core.JumbleEngineTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JumbleEngineTest.givenInvalidPrefix_thenEmptyList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jumble" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asia.fourtitude.interviewq.jumble.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asia.fourtitude.interviewq.jumble.core" />
+      <option name="MAIN_CLASS_NAME" value="asia.fourtitude.interviewq.jumble.core.JumbleEngineTest" />
+      <option name="METHOD_NAME" value="givenInvalidPrefix_thenEmptyList" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JumbleEngineTest.givenValidPrefixCaseInsensitive_thenSomeWords" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jumble" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asia.fourtitude.interviewq.jumble.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asia.fourtitude.interviewq.jumble.core" />
+      <option name="MAIN_CLASS_NAME" value="asia.fourtitude.interviewq.jumble.core.JumbleEngineTest" />
+      <option name="METHOD_NAME" value="givenValidPrefixCaseInsensitive_thenSomeWords" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JumbleEngineTest.givenValidPrefix_thenSomeWords" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jumble" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asia.fourtitude.interviewq.jumble.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asia.fourtitude.interviewq.jumble.core" />
+      <option name="MAIN_CLASS_NAME" value="asia.fourtitude.interviewq.jumble.core.JumbleEngineTest" />
+      <option name="METHOD_NAME" value="givenValidPrefix_thenSomeWords" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JumbleEngineTest.givenValidWord_thenExpectExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jumble" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asia.fourtitude.interviewq.jumble.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asia.fourtitude.interviewq.jumble.core" />
+      <option name="MAIN_CLASS_NAME" value="asia.fourtitude.interviewq.jumble.core.JumbleEngineTest" />
+      <option name="METHOD_NAME" value="givenValidWord_thenExpectExists" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="jumble-ly" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="jumble-ly" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.JumbleEngineTest" />
+        <item itemvalue="JUnit.JumbleEngineTest.givenValidPrefixCaseInsensitive_thenSomeWords" />
+        <item itemvalue="JUnit.JumbleEngineTest.givenValidPrefix_thenSomeWords" />
+        <item itemvalue="JUnit.JumbleEngineTest.givenInvalidPrefix_thenEmptyList" />
+        <item itemvalue="JUnit.JumbleEngineTest.givenValidWord_thenExpectExists" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9767167d-2a54-46d8-8edb-2ee599a0f4b5" name="Changes" comment="" />
+      <created>1771773332203</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1771773332203</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Added implementation for word repository, refactor code to use spring dependency injection">
+      <option name="closed" value="true" />
+      <created>1771775437157</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1771775437157</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Implement word exists for console mode">
+      <option name="closed" value="true" />
+      <created>1771775655956</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1771775655956</updated>
+    </task>
+    <task id="LOCAL-00003" summary="doc to run console mode">
+      <option name="closed" value="true" />
+      <created>1771775810819</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1771775810819</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Implement scramble, fix tests fail caused by unclear application class">
+      <option name="closed" value="true" />
+      <created>1771777847179</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1771777847179</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add execption handling for scrambling non-existant word">
+      <option name="closed" value="true" />
+      <created>1771777969430</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1771777969430</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implement Palindrome">
+      <option name="closed" value="true" />
+      <created>1771779403362</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1771779403362</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Implement random">
+      <option name="closed" value="true" />
+      <created>1771780263153</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1771780263153</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Import Lombok, refactor and redesign to new repository method">
+      <option name="closed" value="true" />
+      <created>1771782351502</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1771782351502</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Import Lombok, refactor and redesign to new repository method">
+      <option name="closed" value="true" />
+      <created>1771782606841</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1771782606841</updated>
+    </task>
+    <task id="LOCAL-00010" summary="implement search words">
+      <option name="closed" value="true" />
+      <created>1771782745813</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1771782745813</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Implement generateSubWords">
+      <option name="closed" value="true" />
+      <created>1771782911362</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1771782911362</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added option to run with different profiles">
+      <option name="closed" value="true" />
+      <created>1771783468151</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1771783468151</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update thymeleaf version">
+      <option name="closed" value="true" />
+      <created>1771785279422</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1771785279422</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Revert &quot;Add annotations to exclude beans needed for running as web application. Make console mode run on default&quot;&#10;&#10;This reverts commit 2f1cd5a5">
+      <option name="closed" value="true" />
+      <created>1771786712530</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1771786712530</updated>
+    </task>
+    <task id="LOCAL-00015" summary="remove seperate profiles, use back original structure">
+      <option name="closed" value="true" />
+      <created>1771787374473</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1771787374473</updated>
+    </task>
+    <task id="LOCAL-00016" summary="revert thymeleaf change">
+      <option name="closed" value="true" />
+      <created>1771787531941</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1771787531941</updated>
+    </task>
+    <task id="LOCAL-00017" summary="implement doPostScramble in root controller">
+      <option name="closed" value="true" />
+      <created>1771788662547</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1771788662547</updated>
+    </task>
+    <task id="LOCAL-00018" summary="implement postExist in root controller">
+      <option name="closed" value="true" />
+      <created>1771788804052</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1771788804052</updated>
+    </task>
+    <task id="LOCAL-00019" summary="implement doPostPrefix in root controller">
+      <option name="closed" value="true" />
+      <created>1771788929042</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1771788929042</updated>
+    </task>
+    <task id="LOCAL-00020" summary="implement doPostSearch in root controller">
+      <option name="closed" value="true" />
+      <created>1771789064048</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1771789064048</updated>
+    </task>
+    <task id="LOCAL-00021" summary="implement doSubword in root controller">
+      <option name="closed" value="true" />
+      <created>1771789198771</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1771789198771</updated>
+    </task>
+    <task id="LOCAL-00022" summary="implement rest controller">
+      <option name="closed" value="true" />
+      <created>1771789672028</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1771789672028</updated>
+    </task>
+    <task id="LOCAL-00023" summary="unit test for game controller (rest)">
+      <option name="closed" value="true" />
+      <created>1771789686632</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1771789686632</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added implementation for word repository, refactor code to use spring dependency injection" />
+    <MESSAGE value="Implement word exists for console mode" />
+    <MESSAGE value="doc to run console mode" />
+    <MESSAGE value="Implement scramble, fix tests fail caused by unclear application class" />
+    <MESSAGE value="Add execption handling for scrambling non-existant word" />
+    <MESSAGE value="Implement Palindrome" />
+    <MESSAGE value="Implement random" />
+    <MESSAGE value="Import Lombok, refactor and redesign to new repository method" />
+    <MESSAGE value="implement search words" />
+    <MESSAGE value="Implement generateSubWords" />
+    <MESSAGE value="Added option to run with different profiles" />
+    <MESSAGE value="update thymeleaf version" />
+    <MESSAGE value="Revert &quot;Add annotations to exclude beans needed for running as web application. Make console mode run on default&quot;&#10;&#10;This reverts commit 2f1cd5a5" />
+    <MESSAGE value="remove seperate profiles, use back original structure" />
+    <MESSAGE value="revert thymeleaf change" />
+    <MESSAGE value="implement doPostScramble in root controller" />
+    <MESSAGE value="implement postExist in root controller" />
+    <MESSAGE value="implement doPostPrefix in root controller" />
+    <MESSAGE value="implement doPostSearch in root controller" />
+    <MESSAGE value="implement doSubword in root controller" />
+    <MESSAGE value="implement rest controller" />
+    <MESSAGE value="unit test for game controller (rest)" />
+    <option name="LAST_COMMIT_MESSAGE" value="unit test for game controller (rest)" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

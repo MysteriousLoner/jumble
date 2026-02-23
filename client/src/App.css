@@ -1,0 +1,313 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+}
+
+/* Welcome Screen */
+.welcome-screen {
+  min-height: 100vh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.welcome-title {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #fff;
+  margin: 0;
+}
+
+.btn-start {
+  padding: 1.5rem 3rem;
+  font-size: 1.2rem;
+  background-color: #000;
+  color: #fff;
+  border: 3px solid #fff;
+}
+
+.btn-start:hover:not(:disabled) {
+  background-color: #fff;
+  color: #000;
+  border: 3px solid #fff;
+}
+
+.App-header {
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #fff;
+}
+
+.App-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  margin: 0;
+}
+
+.App-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  border: 2px solid #000;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-new-game {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.btn-new-game:hover:not(:disabled) {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+}
+
+.btn-reset {
+  flex: 1;
+}
+
+.btn-enter {
+  flex: 1;
+}
+
+.message {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  border: 2px solid #000;
+  background-color: #fff;
+  color: #000;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Top: Game Stats */
+.game-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+  border-bottom: 2px solid #000;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #000;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #000;
+}
+
+/* Middle: Letter Buttons */
+.letter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+.letter-btn {
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 3px solid #000;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.letter-btn:hover:not(:disabled) {
+  background-color: #000;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.letter-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.letter-btn.used {
+  background-color: #e0e0e0;
+  border-color: #999;
+  color: #999;
+}
+
+/* Bottom: Input Section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+.input-display {
+  min-height: 4rem;
+  padding: 1rem;
+  border: 3px solid #000;
+  background-color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-display .placeholder {
+  color: #ccc;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.guessed-words {
+  padding: 1rem 0;
+}
+
+.guessed-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.word-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.guessed-word {
+  padding: 0.5rem 1rem;
+  border: 2px solid #000;
+  background-color: #fff;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.game-over {
+  text-align: center;
+  padding: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  border: 3px solid #000;
+  background-color: #000;
+  color: #fff;
+}
+
+
+
+@media (max-width: 600px) {
+  .welcome-title {
+    font-size: 2.5rem;
+  }
+
+  .btn-start {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .App-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .App-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .App-main {
+    padding: 1rem;
+  }
+
+  .letter-btn {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .input-display {
+    font-size: 1.2rem;
+    min-height: 3rem;
+  }
+
+  .control-buttons {
+    flex-direction: column;
+  }
+}
