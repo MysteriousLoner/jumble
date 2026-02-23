@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: jumble-server
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    networks:
+      - jumble-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/game/new"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: jumble-client
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+    networks:
+      - jumble-network
+
+networks:
+  jumble-network:
+    driver: bridge
