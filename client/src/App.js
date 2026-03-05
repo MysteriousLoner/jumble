@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
+import GameStats from './components/GameStats';
+import LetterButtons from './components/LetterButtons';
+import InputSection from './components/InputSection';
+import GuessedWords from './components/GuessedWords';
 
 function App() {
   const [gameState, setGameState] = useState(null);
@@ -96,20 +100,11 @@ function App() {
           <main className="App-main">
             <div className="game-container">
               {/* Top: Game Stats */}
-              <div className="game-stats">
-                <div className="stat">
-                  <div className="stat-value">{gameState.guessed_words?.length || 0}</div>
-                  <div className="stat-label">FOUND</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-value">{gameState.remaining_words}</div>
-                  <div className="stat-label">REMAINING</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-value">{gameState.total_words}</div>
-                  <div className="stat-label">TOTAL</div>
-                </div>
-              </div>
+              <GameStats 
+                guessedWordsCount={gameState.guessed_words?.length || 0}
+                remainingWords={gameState.remaining_words}
+                totalWords={gameState.total_words}
+              />
 
               {message && (
                 <div className="message">
@@ -118,61 +113,29 @@ function App() {
               )}
 
               {/* Middle: Scrambled Letter Buttons */}
-              <div className="letter-buttons">
-                {gameState.scramble_word.split('').map((letter, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleLetterClick(letter, index)}
-                    disabled={usedLetters.includes(index) || loading || gameState.remaining_words === 0}
-                    className={`letter-btn ${usedLetters.includes(index) ? 'used' : ''}`}
-                  >
-                    {letter.toUpperCase()}
-                  </button>
-                ))}
-              </div>
+              <LetterButtons 
+                scrambleWord={gameState.scramble_word}
+                usedLetters={usedLetters}
+                loading={loading}
+                remainingWords={gameState.remaining_words}
+                onLetterClick={handleLetterClick}
+              />
 
               {/* Bottom: Input Field Display and Controls */}
-              <div className="input-section">
-                <div className="input-display">
-                  {guessInput.toUpperCase() || <span className="placeholder">CLICK LETTERS ABOVE</span>}
-                </div>
-                <div className="control-buttons">
-                  <button 
-                    onClick={handleReset}
-                    disabled={!guessInput || loading}
-                    className="btn btn-reset"
-                  >
-                    RESET
-                  </button>
-                  <button 
-                    onClick={submitGuess}
-                    disabled={loading || !guessInput.trim() || gameState.remaining_words === 0}
-                    className="btn btn-enter"
-                  >
-                    ENTER
-                  </button>
-                </div>
-              </div>
+              <InputSection 
+                guessInput={guessInput}
+                loading={loading}
+                remainingWords={gameState.remaining_words}
+                onReset={handleReset}
+                onSubmit={submitGuess}
+              />
 
               {/* Guessed Words */}
-              {gameState.guessed_words && gameState.guessed_words.length > 0 && (
-                <div className="guessed-words">
-                  <button 
-                    className="guessed-toggle"
-                    onClick={() => setIsGuessedWordsExpanded(!isGuessedWordsExpanded)}
-                  >
-                    <span>GUESSED WORDS ({gameState.guessed_words.length})</span>
-                    <span className={`toggle-icon ${isGuessedWordsExpanded ? 'expanded' : ''}`}>▼</span>
-                  </button>
-                  {isGuessedWordsExpanded && (
-                    <div className="word-list">
-                      {gameState.guessed_words.map((word, index) => (
-                        <span key={index} className="guessed-word">{word.toUpperCase()}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+              <GuessedWords 
+                guessedWords={gameState.guessed_words}
+                isExpanded={isGuessedWordsExpanded}
+                onToggle={() => setIsGuessedWordsExpanded(!isGuessedWordsExpanded)}
+              />
 
               {gameState.remaining_words === 0 && (
                 <div className="game-over">
